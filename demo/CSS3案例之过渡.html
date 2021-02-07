@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>CSS3 过渡动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 800px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        .item {
+            position: relative;
+            top: 0;
+            float: left;
+            margin: 10px;
+            margin-right: 70px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            transition: all 1s linear 0s;
+        }
+        .item:hover {
+            top: 2px;
+            color: black;
+            box-shadow: 1px 1px 12px #AAA;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="item">
+            <img src="images/benz.jpg" alt="奔驰">
+            <p class="desc">奔驰</span>
+        </div>
+        <div class="item">
+            <img src="images/bmw.jpg" alt="宝马">
+            <p class="desc">宝马</p>
+        </div>
+        <div class="item">
+            <img src="images/porsche.jpg" alt="保时捷">
+            <p class="desc">保时捷</span>
+        </div>
+    </div>
+</body>
+</html>

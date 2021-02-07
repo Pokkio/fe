@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block body %}
+    <nav class="navbar" role="navigation">
+        <div class="navbar-collapse" style="text-align: center">
+            <ul class="nav navbar-nav" style="display: inline-block; float: right">
+            <li><div class="navbar-brand">
+                <img alt="Brand" src='../static/images/index_icon.ico'>
+            </div></li>
+            <li><a href="{{ url_for('yws.index') }}" style="color: gray; text-shadow: -1px -1px 0 #000; background-color: #d55; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Home</a></li>
+            <li><a class="button register" href="../templates/register.html" style="color: #053919; text-shadow: 1px 1px 0 #b5e5c5; background-color: #a1c25a; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Register</a></li>
+            <li><a href="{{ url_for('yws.cinema') }}" style="color: greenyellow; text-shadow: -1px -1px 0 #000; background-color: #4499ff; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Cinema</a></li>
+        </ul>
+        </div>
+    </nav>
+     {% block content %}
+        <div class="login">
+            <div class="col-md-4" style="margin: 152px auto 0; position: absolute; left: 0; right: 30%; width: 230px; height: 195px; text-align: center; border-radius: 5px; border: groove">
+                {{ wtf.quick_form(form) }}
+            <br>
+            <a href="../templates/register.html" style="color: mediumspringgreen; text-shadow: -1px -1px 0 #000; background-color: #d55; margin: .5em .25em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%; letter-spacing: 2px;">
+               New user click here to register.
+            </a>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跑马灯</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{msg}}</p>
+    <input type="button" value="跑马灯启动" @click="start">
+    <input type="button" value="跑马灯停止" @click="stop">
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        msg: '大家都跑起来吧...',
+        intervalId: null
+      },
+      methods: {
+        start() {
+          if (this.intervalId != null) return; // 多次点击启动按钮
+          this.intervalId = setInterval(() => {
+            let startS = this.msg.substring(0, 1);
+            let endS = this.msg.substring(1);
+            this.msg = endS + startS;
+          }, 300);
+        },
+        stop() {
+          clearInterval(this.intervalId);
+          this.intervalId = null;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

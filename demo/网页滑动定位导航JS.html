@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {margin: 0; padding: 0;}
+        body {font-size: 12px; line-height: 1.7;}
+        li {list-style: none;}
+        #content {width: 800px; margin: 0 auto; padding: 20px;}
+        #content h1 {color: #0088bb;}
+        #content .item {margin-bottom: 20px; border: 1px dotted #0088bb; padding: 20px;}
+        #content .item h2 {font-size: 16px; font-weight: bold; border-bottom: 2px solid #0088bb; margin-bottom: 10px;}
+        #content .item li {display: inline; overflow: hidden; margin-right: 20px;}
+        #content .item li a img {width: 230px; height: 230px;}
+        #menu {position: fixed; top: 50px; left: 50%; margin-left: 400px; width: 80px;}
+        #menu li a {display: block; width: 60px; font-size: 16px; text-decoration: none; line-height: 30px; margin-top: 30px;
+                       color: black; margin-left: 10px; font-weight: bold; text-align: center;}
+        #menu li a:hover,
+        #menu li a.current {color: #fff; background-color: #0088bb;}
+    </style>
+    <script>
+        window.onload = function() {
+            function hasClass(obj, cls) { // 判断是否有符合class名
+                return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+            }
+            function removeClass(obj, cls) { // 移除class
+                if (hasClass(obj, cls)) {
+                    let reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+                    obj.className = obj.className.replace(reg, '');
+                }
+            }
+            function addClass(obj, cls) { // 添加class
+                if (!hasClass(obj, cls)) {
+                    obj.className += ' ' + cls;
+                }
+            }
+            window.onscroll = function() {
+                const top = document.documentElement ? document.documentElement.scrollTop : document.body.scrollTop;
+                const menus = document.getElementById('menu').getElementsByTagName('a');
+                const items = document.getElementById('content').getElementsByClassName('item');
+                let currentId = '';
+                let itemsLenght = items.length;
+                for (let i = 0; i < itemsLenght; i++) {
+                    let _item = items[i];
+                    let _itemTop = _item.offsetTop; // 
+                    if (top > _itemTop - 180) {
+                        currentId = _item.id;
+                    } else break;
+                }
+                if (currentId) {
+                    for (let i = 0; i < menus.length; i++) {
+                        let _menu = menus[i];
+                        let _hrefArray = _menu.href.split('#'); // _menu.href == https://xxxxx#item1
+                        if (_hrefArray[_hrefArray.length - 1] != currentId) {
+                            removeClass(_menu, 'current');
+                        } else addClass(_menu, 'current');
+                    }
+                }
+            }
+        }
+    </script>
+    <title>地狗购物网</title>
+</head>
+<body>
+    <!-- <div id="menu"> -->
+    <ul id="menu">
+        <li><a href="#item1" class="current">1F 男装</a></li>
+        <li><a href="#item2">2F 女装</a></li>
+        <li><a href="#item3">3F 美妆</a></li>
+        <li><a href="#item4">4F 数码</a></li>
+        <li><a href="#item5">5F 母婴</a></li>
+    </ul>
+    <!-- </div> -->
+    <div id="content">
+        <h1>地狗购物网</h1>
+        <div id="item1" class="item">
+            <h2>1F 男装</h2>
+            <ul>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+                <li><a href="#"><img src="images/1F.jpg" alt="男装" /></a></li>
+            </ul>
+        </div>
+        <div id="item2" class="item">
+            <h2>2F 女装</h2>
+            <ul>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+                <li><a href="#"><img src="images/2F.jpg" alt="女装" /></a></li>
+            </ul>
+        </div>
+        <div id="item3" class="item">
+            <h2>3F 美妆</h2>
+            <ul>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+                <li><a href="#"><img src="images/3F.jpg" alt="美妆" /></a></li>
+            </ul>
+        </div>
+        <div id="item4" class="item">
+            <h2>4F 数码</h2>
+            <ul>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+                <li><a href="#"><img src="images/4F.png" alt="数码" /></a></li>
+            </ul>
+        </div>
+        <div id="item5" class="item">
+            <h2>5F 母婴</h2>
+            <ul>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+                <li><a href="#"><img src="images/5F.jpg" alt="母婴" /></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

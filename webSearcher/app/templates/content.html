@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="top">
+    <nav class="navbar" role="navigation">
+        <div class="navbar-collapse" style="text-align: center">
+            <ul class="nav navbar-nav" style="display: inline-block; float: left">
+                <li><div class="navbar-brand">
+                    <img alt="Brand" src='../static/images/index_icon.ico'>
+                </div></li>
+                <li><a href="{{ url_for('yws.index') }}" style="color: gray; text-shadow: -1px -1px 0 #000; background-color: #d55; margin: .8em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Home</a></li>
+                <li><a href="{{ url_for('yws.cinema') }}" style="color: greenyellow; text-shadow: -1px -1px 0 #000; background-color: #4499ff; margin: .8em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Cinema</a></li>
+                <li>
+                    <form action="search" id="form" name="f" class="fs" style="margin: 10px auto 0; padding: 3px 14px;" method="get">
+            <input type="hidden" value="utf-8">
+            <span class="bg">
+                <input placeholder="输入电影片名.." id="fd" name="fn" class="fc"  value maxlength="50" autocomplete="off" style="height: 30px; width: 300px; border-radius: 4px;">
+            </span>
+                <input type="submit" value="漫游" id="u" style="height: 30px; width: 50px; letter-spacing: 2px; background-color: cyan;">
+        </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    </div>
+    {% block content %}
+        <div class="container" style="display: table; float: left; width: 55%;">
+            <div class="left" style="display: table-cell; width: 25%; opacity: 1;">
+                {% for res in res_list %}
+                    {% for i, j in res.items() %}
+                        <ul>
+                        <li style="color: blueviolet; text-shadow: -1px -1px 0 #000; background-color: #fb3; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%; letter-spacing: 10px;">{{ i }}</li>
+                        <li style="color: greenyellow; text-shadow: -1px -1px 0 #000; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%; letter-spacing: 10px;"><a href="{{ j[name] }}">{{ name }}</a></li>
+                        </ul>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="right" style="display: table-cell; width: 55%; opacity: 1;">
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

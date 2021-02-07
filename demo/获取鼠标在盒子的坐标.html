@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>获取鼠标在盒子里的位置</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            top: 100px;
+            left: 100px;
+            background-color: pink;
+            cursor: pointer;
+            text-align: center;
+            font: 12px/30px "simsun";
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // 鼠标距离所在盒子的距离 = 鼠标在整个页面的位置 - 所在盒子在整个页面的位置
+            let box = document.getElementsByClassName('box')[0];
+            box.onmousemove = function (event) {
+                event = event || window.event;
+                let mousePageY = event.pageY;
+                let mousePageX = event.pageX;
+                let targetY = mousePageY - box.offsetTop;
+                let targetX = mousePageX - box.offsetLeft;
+                box.innerHTML = '鼠标在盒子中的X坐标是：' + targetX + 'px<br />鼠标在盒子中的Y坐标为：' + targetY + 'px';
+            };
+        };
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

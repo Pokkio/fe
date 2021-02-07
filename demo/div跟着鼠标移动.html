@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>div跟着鼠标移动</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let div = document.getElementsByTagName('div')[0];
+            document.onmousemove = function (event) {
+                event = event || window.event;
+                // 鼠标在页面的位置 = 滚动条滚动的距离 + 可视区域的坐标。
+                let pageX = event.pageX || scroll().left + event.clientX;
+                let pageY = event.pageY || scroll().top + event.clientY;
+                div.style.top = pageY - 50 + 'px'; // -50让鼠标停留在方块中间位置
+                div.style.left = pageX - 50 + 'px';
+            };
+            function scroll() {
+                return {
+                    'top': window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop,
+                    'left': window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

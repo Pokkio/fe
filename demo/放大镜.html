@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>放大镜</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        #demo {display: block; width: 400px; height: 260px; margin: 50px;
+               position: relative; border: 1px solid #ccc;}
+        #small-box {position: relative; z-index: 1;}
+        #float-box {display: none; width: 160px; height: 100px;
+                    position: absolute; background: #ffffcc;
+                    border: 1px solid #ccc; filter: alpha(opacity=50);
+                    opacity: 0.5; cursor: move;}
+        #big-box {display: none; position: absolute; top: 0; left: 460px;
+                  width: 400px; height: 300px; overflow: hidden;
+                  border: 1px solid #ccc; z-index: 1;}
+        #big-box img {position: absolute; z-index: 5;}
+    </style>
+    <script>
+        window.onload = function() {
+            const objDemo = document.getElementById('demo');
+            const objSmallBox = document.getElementById('small-box');
+            const objMark = document.getElementById('mark');
+            const objFloatBox = document.getElementById('float-box');
+            const objBigBox = document.getElementById('big-box');
+            const objBigBoxImg = objBigBox.getElementsByTagName('img')[0];
+
+            objSmallBox.onmouseover = function () {
+                objFloatBox.style.display = 'block';
+                objBigBox.style.display = 'block';
+            }
+
+            objSmallBox.onmouseout = function() {
+                objFloatBox.style.display = 'none';
+                objBigBox.style.display = 'none';
+            }
+
+            objSmallBox.onmousemove = function(event) {
+                let _event = event;
+                let left = _event.clientX - objDemo.offsetLeft - objSmallBox.offsetLeft - objFloatBox.offsetWidth / 2; // 获取放大镜的styleLeft（即获取float-box到small-box的横向距离）
+                let top = _event.clientY - objDemo.offsetTop - objSmallBox.offsetTop - objFloatBox.offsetHeight / 2;
+                // 固定放大镜不移出边界
+                if (left < 0) {
+                    left = 0;
+                } else if (left > objSmallBox.offsetWidth - objFloatBox.offsetWidth) {
+                    left = objSmallBox.offsetWidth - objFloatBox. offsetWidth;
+                }
+                if (top < 0) {
+                    top = 0;
+                } else if (top > (objSmallBox.offsetHeight - objFloatBox.offsetHeight)) {
+                    top = objSmallBox.offsetHeight - objFloatBox.offsetHeight;
+                }
+                objFloatBox.style.left = left + 'px';
+                objFloatBox.style.top = top + 'px';
+                
+                /*
+                    获取大图片向右移动距离：
+                    float-box.offsetLeft/(small-box.offsetWidth-float-box.offsetWidth) = bigImageMove.offset/(bigImage.Width-big-box.offsetWidt)
+                */
+                let percentX = left / (objSmallBox.offsetWidth - objFloatBox.offsetWidth);
+                let percentY = top / (objSmallBox.offsetHeight - objFloatBox.offsetHeight);
+                objBigBoxImg.style.left = - percentX * (objBigBoxImg.offsetWidth - objBigBox.offsetWidth) + 'px';
+                objBigBoxImg.style.top = - percentY * (objBigBoxImg.offsetHeight - objBigBox.offsetHeight) + 'px';
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="demo">
+        <div id="small-box">
+            <div id="mark"></div>
+            <div id="float-box"></div> <!--放大镜-->
+            <img src="images/macbook-small.jpg" />
+        </div>
+        <div id="big-box">
+            <img src="images/macbook-big.jpg" />
+        </div>
+    </div>
+    <script>
+        /*
+            放大镜原理: 小图片宽度A/大图片宽度B = 放大镜宽度C/大图片局部放大宽度D = 放大镜往左移动距离X/大图片往右移动距离Y 
+            offsetLeft: 子元素相对父元素的左位移
+            offetTop: 子元素相对父元素的上部位移
+            offsetHeight: 元素展现出来的高度（不包括滚动条可滚动高度）
+            offsetWidth: 元素展现出来的宽度（不包括滚动条）
+            clientX: 鼠标的横坐标，相对于窗口
+            clientY: 鼠标的纵坐标
+        */    
+    </script>
+</body>
+</html>

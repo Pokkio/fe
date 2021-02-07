@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>animation红包雨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        .content {
+            height: 100%;
+            position: relative;
+            background-color: #f2f2f2;
+        }
+        .yudi {
+            position: absolute;
+            background: url(images/red.png) no-repeat;
+            width: 48px;
+            height: 48px;
+            opacity: 0; /*解决动画未开始雨滴就呈现的问题*/
+            /* background-color: red; */
+            /* clip-path: ellipse(10% 30% at 50% 50%); 剪裁成雨滴形状 */
+            animation: drop 1.2s cubic-bezier(0.54, 0.02, 0.99, 0.4) infinite;
+        }
+        @keyframes drop {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(10px, 100vh, -5px);
+            }
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let content = document.querySelector('.content');
+            let yudi = document.querySelector('.yudi');
+            let initLeft = 0;
+            for (let i = 0; i < 30; i++) {
+                newNode = yudi.cloneNode();
+                let left = Math.floor(Math.random() * 9 + 40); // 距离可设置大于等于图片宽度，那么图片就不会重叠
+                let animationDelay = Math.floor(Math.random() * 9 + 3); // 动画延迟执行
+                let top = Math.random() + 2;
+                newNode.style.left = ((initLeft += left) + 'px');
+                newNode.style.top = (top + 'px');
+                newNode.style.animationDelay = (animationDelay / 7 + 's');
+                content.appendChild(newNode);
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="content">
+        <div class="yudi"></div>
+    </div>
+</body>
+</html>

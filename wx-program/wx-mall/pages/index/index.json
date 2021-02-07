@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "SearchInput": "../../components/SearchInput/SearchInput"
+  },
+  "navigationBarTitleText": "有求必应首页"
+}

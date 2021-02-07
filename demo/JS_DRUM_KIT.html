@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS DRUM KIT</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .main {
+            position: absolute;
+            top: 45%;
+            width: 100%;
+            font-size: 1.4em;
+            text-align: center;
+        }
+        .key {
+            padding: 23px 0;
+            text-align: center;
+            width: 100px;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: inline-block;
+            margin-right: 20px;
+            border: 3px solid black;
+            border-radius: 50%;
+            color: #fff;
+            text-shadow: 0 1px 3px black;
+            transition: all .07s;
+        }
+        .sound {
+            font-size: .4em;
+            color: #ffc600;
+            display: block;
+        }
+        .playing {
+            transform: scale(1.5);
+            border-color:#ffc600;
+            box-shadow: 0 0 10px #ffc600;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="key" data-key="65"><span>A</span><span class="sound">CLAP</span></div>
+        <div class="key" data-key="83"><span>S</span><span class="sound">HIHAT</span></div>
+        <div class="key" data-key="68"><span>D</span><span class="sound">KICK</span></div>
+        <div class="key" data-key="70"><span>F</span><span class="sound">OPENHAT</span></div>
+        <div class="key" data-key="71"><span>G</span><span class="sound">BOOM</span></div>
+        <div class="key" data-key="72"><span>H</span><span class="sound">RIDE</span></div>
+        <div class="key" data-key="74"><span>J</span><span class="sound">SNARE</span></div>
+        <div class="key" data-key="75"><span>K</span><span class="sound">TOM</span></div>
+        <div class="key" data-key="76"><span>L</span><span class="sound">TINK</span></div>
+        <audio src="sounds/clap.wav" data-key="65"></audio>
+        <audio src="sounds/hihat.wav" data-key="83"></audio>
+        <audio src="sounds/kick.wav" data-key="68"></audio>
+        <audio src="sounds/openhat.wav" data-key="70"></audio>
+        <audio src="sounds/boom.wav" data-key="71"></audio>
+        <audio src="sounds/ride.wav" data-key="72"></audio>
+        <audio src="sounds/clap.wav" data-key="74"></audio>
+        <audio src="sounds/snare.wav" data-key="75"></audio>
+        <audio src="sounds/tom.wav" data-key="76"></audio>
+
+    </div>
+    <script>
+        window.onload = function () {
+            function removeTransitionon(event) {
+                // 移除播放完成时的状态
+                if (event.propertyName !== 'transform') return;
+                event.target.classList.remove('playing');
+            }
+            function playSound(event) {
+                // 获取播放按键及播放声音
+                const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+                if (!audio) return; // 如果不是页面中呈现的按键就不触发
+                const key = document.querySelector(`div[data-key="${event.keyCode}"]`)
+                key.classList.add('playing');
+                audio.currentTime = 0;
+                audio.play();
+            }
+            const keysArr = Array.from(document.querySelectorAll('.key')); // querySelector 返回的是NodeList(类数组)
+            keysArr.forEach(key => key.addEventListener('transitionend', removeTransition));
+            window.addEventListener('keydown', playSound);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {{ super() }}
+    <audio autoplay="autoplay" src="../static/multimedia/open.mp3" preload="auto"></audio>
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar" role="navigation">
+        <div class="navbar-collapse" style="text-align: center;">
+            <ul class="nav navbar-nav" style="display: inline-block; float: right">
+            <li><div class="navbar-brand">
+                <img alt="Brand" src='../static/images/index_icon.ico'>
+            </div></li>
+            <li><a href="#" style="color: blueviolet; text-shadow: -1px -1px 0 #000; background-color: #fb3; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;" onclick="easter_egg()">EEgg</a></li>
+            <li><a href="{{ url_for('yws.index') }}" style="color: gray; text-shadow: -1px -1px 0 #000; background-color: #d55; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Home</a></li>
+{#            <li><a href="{{ url_for('yws.login') }}" style="color: white; text-shadow: -1px -1px 0 #000; background-color: #204650; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Login</a></li>#}
+{#            <li><a class="button register" href="{{ url_for('yws.register') }}" style="color: #053919; text-shadow: 1px 1px 0 #b5e5c5; background-color: #a1c25a; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Register</a></li>#}
+            <li><a href="{{ url_for('yws.cinema') }}" style="color: greenyellow; text-shadow: -1px -1px 0 #000; background-color: #4499ff; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Cinema</a></li>
+        </ul>
+        </div>
+    </nav>
+
+{% block content %}
+    <div class="container">
+        <form action="search" id="form" name="f" class="fs" style="margin: 188px auto 0; width: 430px; text-align: left;" method="get">
+            <input type="hidden" value="utf-8">
+            <span class="bg">
+                <input placeholder="输入电影片名.." id="fd" name="fn" class="fc"  value maxlength="50" autocomplete="off" style="height: 30px; width: 300px; border-radius: 4px;">
+            </span>
+                <input type="submit" value="漫游" id="u" style="height: 30px; width: 50px; letter-spacing: 2px; background-color: cyan;">
+        </form>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div class="footer" style="margin-top: 415px; padding: 0; list-style: none; display: block;">
+        <footer class="footer">
+                <div id="href">
+                    <p id="web">
+                        <a href="https://github.com/" style="margin-left: 578px; font-size: 14px;">Github</a>
+                        <a href="https://stackoverflow.com/" style="margin-left: 10px; font-size: 14px;">Stackoverflow</a>
+                        <a href="https://www.google.com/" style="margin-left: 15px; font-size: 14px;">Google</a>
+                        <a href="https://clay0x1.top/" style="margin-left: 16px; font-size: 14px;">CLay's blog</a>
+                    </p>
+                    <p id="cr">
+                        <h6 style="margin-left: 550px; font-size: 18px;">Copyright © 2018 CLay All Rights Reserved.</h6>
+                </div>
+        </footer>
+    </div>
+    <script>
+    function easter_egg() {
+        alert('彩蛋\n彩蛋\n彩蛋\n彩蛋\n彩蛋\n彩蛋\n彩蛋\n彩蛋\n彩蛋');
+    }
+    </script>
+{% endblock %}
+{% endblock %}

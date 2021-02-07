@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <style>
+        body {margin: 5px; text-align: center;}
+        input,button {margin: 0; padding: 0;}
+        input {max-width: 50px; background: cornsilk;}
+        span {color: darkgreen;}
+    </style>
+    <script>
+        window.onload = function() {
+            const btn = document.getElementsByTagName('button')[0];
+            const inputs = document.getElementsByTagName('input');
+            const sum = document.getElementsByTagName('span')[0];
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].onkeyup = function() {
+                    this.value = this.value.replace(/[^\d]/, '');
+                }
+            }
+            btn.onclick = function() {
+                const inputValue1 = inputs[0].value;
+                const inputValue2 = inputs[1].value;
+                (inputValue1 == '' || inputValue2 == '') ? alert('请输入数字'): sum.innerHTML = parseInt(inputValue1) + parseInt(inputValue2);
+            };
+        }
+    </script>
+    <title>parseInt解析整数并求和</title>
+</head>
+<body>
+    <input type="text">
+    <strong>+</strong>
+    <input type="text">
+    <strong>=</strong>
+    <span>?</span>
+    <button value="求和">求和</button>
+</body>
+</html>

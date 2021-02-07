@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}ROAM 影 院{% endblock %}
+
+{% block body %}
+    <nav class="navbar" role="navigation">
+        <div class="navbar-collapse" style="text-align: center">
+            <ul class="nav navbar-nav" style="display: inline-block; float: right">
+            <li><div class="navbar-brand">
+                <img alt="Brand" src='../static/images/index_icon.ico'>
+            </div></li>
+            <li><a href="{{ url_for('yws.index') }}" style="color: gray; text-shadow: -1px -1px 0 #000; background-color: #d55; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Home</a></li>
+{#            <li><a href="/login" style="color: white; text-shadow: -1px -1px 0 #000; background-color: #204650; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Login</a></li>#}
+{#            <li><a class="button register" href="/register" style="color: #053919; text-shadow: 1px 1px 0 #b5e5c5; background-color: #a1c25a; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%;">Register</a></li>#}
+        </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+        <div class="container">
+            <video width="535" height="300" controls autoplay="autoplay">
+                <source src="../static/multimedia/video.mp4" type="video/mp4">
+            </video>
+        <br>
+        <label style="color: mediumspringgreen; text-shadow: -1px -1px 0 #000; background-color: #d55; margin: .5em .25em; padding: .5em 1em; border-radius: 4px; background-size: 100% 150%; background-position: 0 100%; letter-spacing: 2px;">ROAM影院已停业</label>
+        </div>
+    {% endblock %}
+{% endblock %}

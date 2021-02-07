@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>卡牌旋转</title>
+    <style>
+        .box {
+            width: 550px;
+            height: 750px;
+            margin: 100px auto;
+            position: relative;
+        }
+        img {
+            width: 500px;
+            height: 700px;
+            transition: all .5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: center bottom;
+        }
+        .box:hover img:nth-child(1) {
+            transform: rotate(-60deg);
+        }
+        .box:hover img:nth-child(2) {
+            transform: rotate(-50deg);
+        }
+        .box:hover img:nth-child(3) {
+            transform: rotate(-40deg);
+        }
+        .box:hover img:nth-child(4) {
+            transform: rotate(-30deg);
+        }
+        .box:hover img:nth-child(5) {
+            transform: rotate(-20deg);
+        }
+        .box:hover img:nth-child(6) {
+            transform: rotate(-10deg);
+        }
+        .box:hover img:nth-child(8) {
+            transform: rotate(10deg);
+        }
+        .box:hover img:nth-child(9) {
+            transform: rotate(20deg);
+        }
+        .box:hover img:nth-child(10) {
+            transform: rotate(30deg);
+        }
+        .box:hover img:nth-child(11) {
+            transform: rotate(40deg);
+        }
+        .box:hover img:nth-child(12) {
+            transform: rotate(50deg);
+        }
+        .box:hover img:nth-child(13) {
+            transform: rotate(60deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/zhipai1.jpg" alt="">
+        <img src="images/zhipai2.jpg" alt="">
+        <img src="images/zhipai1.jpg" alt="">
+        <img src="images/zhipai2.jpg" alt="">
+        <img src="images/zhipai1.jpg" alt="">
+        <img src="images/zhipai2.jpg" alt="">
+        <img src="images/zhipai1.jpg" alt="">
+        <img src="images/zhipai2.jpg" alt="">
+        <img src="images/zhipai1.jpg" alt="">
+        <img src="images/zhipai2.jpg" alt="">
+        <img src="images/zhipai1.jpg" alt="">
+        <img src="images/zhipai2.jpg" alt="">
+        <img src="images/zhipai1.jpg" alt="">
+    </div>
+</body>
+</html>

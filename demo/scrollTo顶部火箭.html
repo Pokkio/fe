@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>scrollTo实例</title>
+    <style>
+        div {
+            margin: 0;
+            padding: 0;
+            width: 100px;
+            margin: 50px auto;
+            color: red;
+        }
+        img {
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function scroll() {
+                return {
+                    left: window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft,
+                    top: window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop
+                };
+            }
+            // window.scrollTo(x, y)：浏览器显示区域跳转到指定区域
+            let img = document.getElementsByTagName('img')[0];
+            window.onscroll = function () {
+                // 滚动距离超过500显示
+                if (scroll().top > 500) {
+                    img.style.display = 'block';
+                } else {
+                    img.style.display = 'none';
+                }
+                scrollDistance = scroll().top; // 记录滚动距离
+            }
+
+            let timer = null;
+            let target = 0; // 目标位置
+            let scrollDistance = 0;
+            img.onclick = function () {
+                    timer = setInterval(() => {
+                        let step = scrollDistance / 10;
+                        step = Math.ceil(step);
+                        window.scrollTo(target, scrollDistance - step);
+
+                        if (scrollDistance === 0) {
+                            clearInterval(timer);
+                        }
+                    }, 30);
+                }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+        顶部火箭<br />
+    </div>
+    <img src="images/rocket.jpg" />
+</body>
+</html>

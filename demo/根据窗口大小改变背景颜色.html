@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>根据窗口大小改变背景颜色</title>
+    <script>
+        window.onload = function () {
+            function client() {
+                return {
+                    'height': window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
+                    'width': window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+                };
+            }
+            function changeBgColor() {
+                if (client().width > 960) {
+                    document.body.style.backgroundColor = 'red';
+                } else if (client().width > 640) {
+                    document.body.style.backgroundColor = 'blue';
+                } else {
+                    document.body.style.backgroundColor = 'green';
+                }
+            }
+            window.onresize = changeBgColor;
+            changeBGcolor(); // 页面加载的时候直接执行一次函数，确定浏览器可视区域的宽，给背景上色
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

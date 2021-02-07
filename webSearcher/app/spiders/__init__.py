@@ -1,0 +1,1 @@
+from app.spiders.film_spider import FilmSpider

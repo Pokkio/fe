@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>Vue Todo List</title>
+    <script src="vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .head {
+            padding: 10px 0;
+            background-color: teal;
+            color: #ffff;
+            text-align: center;
+        }
+
+        .content {
+            width: 400px;
+            margin: 0 auto;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .content input {
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+        }
+        
+        .content ol {
+            margin-top: 20px;
+        }
+
+        .content ol li {
+            list-style: none;
+            margin-bottom: 20px;
+            height: 45px;
+            line-height: 40px;
+            box-shadow: 0 0 7px #c0c0c0;
+            transition: all .2s;
+        }
+
+        .content ol li:hover {
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .isFinished p {
+            text-decoration: line-through;
+            color: teal;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h3>TODO LIST</h3>
+    </div>
+    <div class="content">
+        <div>
+            <el-input type="text" 
+             v-model="inputValue" 
+             placeholder="回车可添加任务/单击可完成任务" 
+             @keyup.enter.native="handleSubmit"
+            />
+        </div>
+        <ol>
+            <todo-item 
+             v-for="(item, index) in list" 
+             :key="index" 
+             :content="item" 
+             :index="index"
+            >
+            </todo-item>
+        </ol>
+    </div>
+</body>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        let TodoItem = {
+            template: '<li @click="handleClick" :class="{isFinished: done}"><p>{{content}}</p></li>',
+            props: ['content', 'index'],
+            data() {
+                return {
+                    isFinishedIndex: []
+                }
+            },
+            methods: {
+                handleClick() {
+                    if (this.isFinishedIndex.indexOf(this.index) !== -1) {
+                        this.isFinishedIndex.splice(this.isFinishedIndex.indexOf(this.index), 1)
+                    } else this.isFinishedIndex.push(this.index);
+                }
+                // handleClick() {
+                //     this.$emit('delete', this.index);
+                // }
+            },
+            computed: {
+                done() {
+                    return this.isFinishedIndex.some(item => item === this.index);
+                }
+            }
+        };
+
+        const App = new Vue({
+            el: '.content',
+            data: {
+                inputValue: '',
+                list: [],
+            },
+            components: {
+                TodoItem
+            },
+            methods: {
+                handleSubmit() {
+                    if (this.list.some(item => item == this.inputValue)) {
+                        this.inputValue = '';
+                        alert('输入的TODO已存在');
+                        return;
+                    }
+                    this.list.push(this.inputValue);
+                    this.inputValue = '';
+                },
+                handleDelete(index) {
+                    this.list.splice(index, 1);
+                }
+            }
+        })
+    </script>
+</html>

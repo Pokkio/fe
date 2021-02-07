@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>绝对定位实践</title>
+    <style>
+        .box {
+            margin: 100px auto;
+            width: 308px;
+            height: 308px;
+            border: 1px solid #FF7E00;
+            position: relative; /*子绝父相*/
+        }
+        .box .image img {
+            width: 308px;
+            height: 196px;
+        }
+        .box .dtc {
+            display: block;
+            width: 52px;
+            height: 28px;
+            background-image: url(http://img.smyhvae.com/20180116_1115.png);
+            background-position: 233px 0px;
+            position: absolute;
+            top: -9px;
+            left: 13px;
+        }
+        .box h5 {
+            background-color: black;
+            color: white;
+            position: absolute;
+            width: 308px;
+            height: 40px;
+            top: 131px;
+            line-height: 40px;
+        }
+        .box p {
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class="dtc"></span>
+        <div class="image">
+            <img src="http://img.smyhvae.com/20180116_1116.jpg" alt="">
+        </div>
+        <h5>广东深圳宝安区建安一路海雅缤纷城4楼</h5>
+        <p><span style="font-weight: bold;">【海雅缤纷城】万达影城（深圳海雅广场...</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp单人电影城，可观看2D</p>
+    </div>
+</body>
+</html>

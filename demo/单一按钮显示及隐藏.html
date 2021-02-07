@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <style>
+        body{font: 9px Tahoma;}
+        h2,ul,li{margin: 0; padding: 0;}
+        #outer{width: 220px; margin: auto; border: 1px solid sienna;}
+        #outer h2 {border: 1px solid #aaa; line-height: 25px; padding-left: 20px;
+                   font-size: 16px; background: #cccccc 190px -15px url(images/single_btn.gif) no-repeat;
+                   cursor: pointer;}
+        #outer h2.close {background: #cccccc 190px 13px url(images/single_btn.gif) no-repeat;}
+        #outer ul {list-style-type: none; background: tan;}
+        #outer li {line-height: 25px;}
+        #outer a {text-decoration: none; padding-left: 20px; display: block; color: white;}
+        #outer a:hover {background: wheat;}
+    </style>
+    <script>
+        window.onload = function() {
+            const HTag = document.getElementsByTagName('h2')[0];
+            const UlTag = document.getElementsByTagName('ul')[0];
+            HTag.onclick = function() {
+                UlTag.style.display = UlTag.style.display == 'none' ? 'block' : 'none';
+                HTag.className = UlTag.style.display == 'none' ? 'close' : '';
+            };
+        }
+    </script>
+    <title>单一按钮显示/隐藏</title>
+</head>
+<body>
+    <div id="outer">
+        <h2>播放列表...</h2>
+        <ul style="display: block;">
+            <li><a href="#">玩家之徒 - 蔡依林</a></li>
+            <li><a href="#">原谅我就是这样的女生 - 戴佩妮</a></li>
+            <li><a href="#">猜不透 - 丁当</a></li>
+            <li><a href="#">自导自演 - 周杰伦</a></li>
+            <li><a href="#">浪漫窝 - 弦子</a></li>
+            <li><a href="#">流年 - 王菲</a></li>
+        </ul>
+    </div>
+</body>
+</html>

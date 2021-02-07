@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>animation跑马灯轮播图</title>
+    <style>
+        div, img {
+            padding: 0;
+            margin: 0;
+        }
+        .outerbox {
+            width: 398px;
+            overflow: hidden;
+            border: 4px solid black;
+            margin: 0 auto;
+        }
+        .innerbox {
+            width: 1600px;
+            animation: slide 10s linear infinite forwards;
+            animation-play-state: running;
+        }
+        .innerbox img {
+            vertical-align: bottom;
+        }
+        .innerbox:hover {
+            animation-play-state: paused;
+        }
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-300px);
+            }
+            50% {
+                transform: translateX(-600px);
+            }
+            75% {
+                transform: translateX(-900px);
+            }
+            100% {
+                transform: translateX(-1198px);
+            }
+        }
+        .btn {
+            width: 160px;
+            margin: 10px auto;
+        }
+        .btn img {
+            width: 20px;
+            height: 20px;
+            margin-right: 20px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let outerbox = document.getElementsByClassName('outerbox')[0];
+            let innerbox = document.getElementsByClassName('innerbox')[0];
+            let imgArray1 = document.getElementsByClassName('innerbox')[0].getElementsByTagName('img');
+            let imgArray2 = document.getElementsByClassName('btn')[0].getElementsByTagName('img');
+            let imgs = ["url('images/1F.jpg')", "url('images/2F.jpg')", "url('images/3F.jpg')", "url('images/4F.png')"]
+            for (let i = 0; i < imgArray2.length; i++) {
+                for (let j = 0; j < imgArray2.length; j++) {
+                    imgArray2[j].onmouseout = function () {
+                        imgArray2[j].style.opacity = 1;
+                        innerbox.style.animationPlayState = 'running';
+                        innerbox.style.opacity = '';
+                    }
+                }
+                imgArray2[i].onmouseenter = function () {
+                    imgArray2[i].style.opacity = 0.1;
+                    outerbox.style.backgroundImage = imgs[i];
+                    innerbox.style.animationPlayState = 'paused';
+                    innerbox.style.opacity = 0;
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="outerbox">
+        <div class="innerbox">
+            <img src="images/1F.jpg" /><img src="images/2F.jpg" /><img src="images/3F.jpg" /><img src="images/4F.png" />
+        </div>
+    </div>
+    <div class="btn">
+        <img src="images/橙子.png"><img src="images/榴莲.png"><img src="images/芒果.png"><img src="images/香蕉.png">
+    </div>
+</body>
+</html>

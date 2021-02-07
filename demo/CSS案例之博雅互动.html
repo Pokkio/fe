@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <title>博雅互动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .cl {
+            clear: both;
+        }
+        body {
+            font-size: 14px;
+            font-family: "Microsoft YaHei","SimSun";
+        }
+        .header {
+            width: 100%;
+            height: 60px;
+            background-color: #191d3a;
+        }
+        .header {
+            height: 58px;
+            margin: 0 auto;
+        }
+        .inner_c {
+            width: 1100px;
+            margin: 0 auto;
+        }
+        .header .inner_c .logo{
+            float: left;
+            width: 160px;
+            height: 58px;
+        }
+        .header .inner_c .logo a {
+            width: 160px;
+            display: block;
+            height: 48px;
+            background: url(images/logo.png) no-repeat right;
+            text-indent: -999em;
+        }
+        .header .inner_c .nav {
+            float: left;
+            margin-left: 40px;
+        }
+        .header .inner_c .nav ul {
+            list-style: none;
+        }
+        .header .inner_c .nav ul li {
+            float: left;
+            width: 100px;
+            line-height: 58px;
+            text-align: center;
+            border-left: 1px solid #252947;
+        }
+        .header .inner_c .nav ul li.last {
+            border-right: 1px solid #252947;
+        }
+        .header .inner_c .nav ul li a {
+            display: block;
+            color:#818496;
+            text-decoration: none;
+            height: 58px;
+            text-align: center;
+        }
+        .header .inner_c .nav ul li a.current {
+            color: white;
+        }
+        .header .inner_c .nav .jrwm {
+            height: 32px;
+            width: 82px;
+            border: 1px solid #3aca7a;
+            margin: 12px 0 0 10px;
+            line-height: 32px;
+            border-radius: 3px;
+            color: white;
+            background-color: #38b774;
+        }
+        .header .inner_c .nav a:last-child:hover {
+            color: white;
+        }
+        .header .inner_c .nav a:last-child:active {
+            opacity: 0.9;
+        }
+
+        .banner {
+            height: 466px;
+            background: url(images/banner1.jpg) no-repeat center top;
+        }
+
+        .content {
+            padding-top: 50px;
+        }
+        .content .product {
+            height: 268px;
+            border-bottom: 1px solid #dbe1e7;
+        }
+        .content .product ul {
+            list-style: none;
+        }
+        .content .product ul li {
+            float: left;
+            width: 218px;
+            margin-left: 40px;
+        }
+        .content .product ul li:hover {
+            background-color: #cddbd3;
+            color: white;
+        }
+        .content .product ul li img{
+            width: 218px;
+            height: 130px;
+        }
+        .content .product ul li .djbf {
+            text-align: center;
+            line-height: 16px;
+            padding-bottom: 5px;
+        }
+        .content .product ul li p.djbf a{
+            font-size: 12px;
+            color:#38B774;
+            text-decoration: none;
+            background:url(images/arrow.png) no-repeat right 5px;
+            padding-right: 12px;
+        }
+        .content .product ul li h3 {
+            text-align: center;
+            line-height: 38px;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const aTags = document.getElementsByClassName('nav')[0].getElementsByTagName('a');
+            currentIndex = 0;
+            for (let i = 0; i < aTags.length - 1; i++) {
+                aTags[i].onclick = function() {
+                    aTags[currentIndex].className = '';
+                    aTags[i].className = 'current';
+                    currentIndex = i;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="inner_c">
+            <h1 class="logo">
+                <a href="#">博雅互动 - 游戏公司</a>
+            </h1>
+            <div class="nav">
+                <ul>
+                    <li><a href="#" class="current">首页</a></li>
+                    <li><a href="#">博雅游戏</a></li>
+                    <li><a href="#">博雅新闻</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">客服中心</a></li>
+                    <li class="last"><a href="#">投资者关系</a></li>
+                    <li><a href="https://www.github.com/" target="_blank" class="jrwm">加入我们</a></li>
+                </ul>
+        </div>
+    </div>
+    <div class="cl"></div> <!--外墙法: 清除浮动-->
+    <div class="banner"></div>
+    <div class="content">
+        <div class="product inner_c">
+            <ul>
+                <li>
+                    <p><img src="images/prod1.jpg" /></p>
+                    <h3>BPT宣传片</h3>
+                    <p class="djbf">
+                        <a href="#">点击播放</a>
+                    </p>
+                </li>
+                <li>
+                    <p><img src="images/prod2.jpg" /></p>
+                    <h3>BPT宣传片</h3>
+                    <p class="djbf">
+                        <a href="#">点击播放</a>
+                    </p>
+                </li>
+                <li>
+                    <p><img src="images/prod3.jpg" /></p>
+                    <h3>BPT宣传片</h3>
+                    <p class="djbf">
+                        <a href="#">点击播放</a>
+                    </p>
+                </li>
+                <li>
+                    <p><img src="images/prod4.jpg" /></p>
+                    <h3>BPT宣传片</h3>
+                    <p class="djbf">
+                        <a href="#">点击播放</a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

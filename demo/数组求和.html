@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/icon.png">
+    <style>
+      .sum {color: red; font-size: 30px;}
+    </style>
+    <title>数组求和</title>
+</head>
+<body>
+    <div id="outer">
+        <input id="numbers" name="numbers" type="text" placeholder="输入数字求和，数字之间用半角','号分隔" size="40">
+        <p><button>求和</button></p>
+        <strong class="sum"></strong>
+    </div>
+</body>
+<script>
+  window.onload = function() {
+      var btn = document.getElementsByTagName('button')[0];
+      var numbers = document.getElementById('numbers');
+      var strong = document.getElementsByTagName('strong')[0];
+      numbers.onkeyup = function() { // onkeyup 键盘松开事件
+          this.value = this.value.replace(/[^(\d)|(,)]/, '')
+      };
+      btn.onclick = function() {
+          var sum = 0;
+          var oInput = document.getElementsByTagName("input")[0].value.split(",");
+          for (var i in oInput) {
+              sum += parseInt(oInput[i]);
+          }
+          strong.innerHTML = sum;
+      }
+  }
+</script>
+</html>

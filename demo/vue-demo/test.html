@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    搜索框：
+    <input type="text" id="search" v-model="name" v-focus>
+</div>
+
+<script>
+
+    //自定义全局指令 v-focus，让文本框自动获取焦点
+    //参数1：指令的名称。注意，在定义的时候，指令的名称前面，不需要加 v- 前缀；但是：在`调用`的时候，必须在指令名称前 加上 v- 前缀
+    //参数2：是一个对象，这个对象身上，有一些指令相关的函数，这些函数可以在特定的阶段，执行相关的操作
+    Vue.directive('focus', {
+        //在每个函数中，第一个参数，永远是 el ，表示 被绑定了指令的那个元素，这个 el 参数，是一个原生的JS对象（DOM对象）
+        bind: function (el) { // 每当指令绑定到元素上的时候，会立即执行这个 bind 函数，【只执行一次】
+            // 在元素 刚绑定了指令的时候，还没有 插入到 DOM中去，这时候，调用 focus 方法没有作用
+            //  因为，一个元素，只有插入DOM之后，才能获取焦点
+            // el.focus()
+        },
+        inserted: function (el) {  // inserted 表示元素 插入到DOM中的时候，会执行 inserted 函数【触发1次】
+            el.focus()
+            // 和JS行为有关的操作，最好在 inserted 中去执行，防止 JS行为不生效
+        },
+        updated: function (el) {  // 当VNode更新的时候，会执行 updated， 【可能会触发多次】
+        }
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'smyhvae'
+        }
+    })
+</script>
+</body>
+
+</html>
