@@ -1,4 +1,11 @@
-# webbb
+<!--
+ * @Description: 
+ * @Author: Pokkio
+ * @Date: 2021-02-17 22:59:42
+ * @LastEditTime: 2021-02-17 23:07:17
+ * @LastEditors: Pokkio
+-->
+# fe
 
 ## demo
 简单页面
@@ -6,7 +13,7 @@
 ## u-hair
 优剪-like 移动端
 
-## genericScript
+## scripts
 JS脚本
 
 ## mall
@@ -33,5 +40,8 @@ Vue 动态路由及权限认证简单实践
 ## jianshu
 简书-like and use react
 
-## wx-todo
+## wx-program
 微信小程序之todo应用
+
+## react-ts-starter
+react + ts 环境配置脚手架
