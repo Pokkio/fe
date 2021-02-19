@@ -2,7 +2,7 @@
  * @Description:
  * @Author: Pokkio
  * @Date: 2021-02-18 11:43:35
- * @LastEditTime: 2021-02-18 15:55:01
+ * @LastEditTime: 2021-02-18 21:23:49
  * @LastEditors: Pokkio
  */
 const ERROR = 2
@@ -38,6 +38,7 @@ module.exports = {
       node: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
       },
+      typescript: {},
     },
   },
   plugins: ['react', '@typescript-eslint', 'unicorn', 'promise'],
@@ -53,5 +54,7 @@ module.exports = {
       },
     ],
     semi: [ERROR, 'never'],
+    'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.tsx'] }],
   },
 }
